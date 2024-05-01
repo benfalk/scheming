@@ -1,0 +1,20 @@
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Metrics/BlockLength:
+  AllowedMethods: ['define', 'describe', 'it', 'context', 'let']
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 90
