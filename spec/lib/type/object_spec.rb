@@ -8,6 +8,7 @@ RSpec.describe Scheming::Type::Object do
 
     it do
       expect(instance.attributes).to eq(attr_list)
+      expect(Scheming::Schema.json(instance)).to be_valid_json_schema
       expect(Scheming::Schema.json(instance)).to eq(
         {
           type: 'object',
@@ -24,6 +25,7 @@ RSpec.describe Scheming::Type::Object do
 
     it do
       expect(instance.attributes).to eq(attr_list)
+      expect(Scheming::Schema.json(instance)).to be_valid_json_schema
       expect(Scheming::Schema.json(instance)).to eq(
         {
           type: 'object',

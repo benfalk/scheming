@@ -57,15 +57,15 @@ Scheming::Schema.json(Receipt)
               { type: 'null' }
             ]
           },
-          price: { type: 'numeric' },
+          price: { type: 'number' },
           item_type: {
             type: 'string',
-            enum: Set['intertainment', 'staple']
+            enum: ['intertainment', 'staple']
           }
         }
       }
     },
-    total: { type: 'numeric' }
+    total: { type: 'number' }
   }
 }
 ```

@@ -6,7 +6,7 @@ module Scheming::Schema
     module Constants
       NULL = { type: 'null' }.freeze
       INTEGER = { type: 'integer' }.freeze
-      FLOAT = { type: 'numeric' }.freeze
+      FLOAT = { type: 'number' }.freeze
       STRING = { type: 'string' }.freeze
       BOOLEAN = { type: 'boolean' }.freeze
     end
@@ -68,7 +68,7 @@ module Scheming::Schema
 
     refine Scheming::Type::Enum do
       def schema
-        type.schema.merge(enum: values).freeze
+        type.schema.merge(enum: values.to_a.freeze).freeze
       end
     end
 

@@ -5,6 +5,7 @@ RSpec.describe Scheming::Type::Float do
 
   it do
     expect(instance).to be_a(described_class)
-    expect(Scheming::Schema.json(instance)).to eq(type: 'numeric')
+    expect(Scheming::Schema.json(instance)).to be_valid_json_schema
+    expect(Scheming::Schema.json(instance)).to eq(type: 'number')
   end
 end

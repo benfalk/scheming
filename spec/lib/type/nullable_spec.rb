@@ -6,10 +6,11 @@ RSpec.describe Scheming::Type::Nullable do
 
   it do
     expect(instance.type).to eq(type)
+    expect(Scheming::Schema.json(instance)).to be_valid_json_schema
     expect(Scheming::Schema.json(instance)).to eq(
       {
         oneOf: [
-          { type: 'numeric' },
+          { type: 'number' },
           { type: 'null' }
         ]
       }

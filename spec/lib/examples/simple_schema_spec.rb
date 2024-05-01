@@ -40,15 +40,15 @@ RSpec.describe do
                   { type: 'null' }
                 ]
               },
-              price: { type: 'numeric' },
+              price: { type: 'number' },
               item_type: {
                 type: 'string',
-                enum: %w[entertainment staple].to_set
+                enum: %w[entertainment staple]
               }
             }
           }
         },
-        total: { type: 'numeric' }
+        total: { type: 'number' }
       }
     )
   end

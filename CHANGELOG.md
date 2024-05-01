@@ -24,3 +24,15 @@
     attribute :item_type, Enum('entertainment', 'staple')
   end
   ```
+
+## [0.3.0] - 2024-05-01
+
+### Bugfix
+
+- JSON Schema for Float was `numeric` instead of `number`
+
+- JSON Schema production of `Enum` **must** be an array
+
+### Enhancement
+
+- Ensure all types produce valid JSON Schema

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scheming (0.1.0)
+    scheming (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -16,6 +16,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.6)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
     bigdecimal (3.1.7)
@@ -29,6 +31,8 @@ GEM
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     json (2.7.2)
+    json-schema (4.3.0)
+      addressable (>= 2.8)
     language_server-protocol (3.17.0.3)
     method_source (1.1.0)
     minitest (5.22.3)
@@ -40,6 +44,7 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    public_suffix (5.0.5)
     racc (1.7.3)
     rainbow (3.1.1)
     rake (13.2.1)
@@ -81,6 +86,7 @@ PLATFORMS
 
 DEPENDENCIES
   factory_bot (~> 6.4)
+  json-schema (~> 4.3)
   pry (~> 0.14.2)
   rake (~> 13.0)
   rspec (~> 3.0)

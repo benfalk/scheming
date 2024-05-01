@@ -6,5 +6,6 @@ RSpec.describe Scheming::Type::Boolean do
   it do
     expect(instance).to be_a(described_class)
     expect(Scheming::Schema.json(instance)).to eq(type: 'boolean')
+    expect(Scheming::Schema.json(instance)).to be_valid_json_schema
   end
 end

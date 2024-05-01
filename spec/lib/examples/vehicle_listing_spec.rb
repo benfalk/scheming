@@ -38,7 +38,7 @@ class VehicleListing < Scheming.object \
     #   @return [Array<PriceHistoryItem>]
     attribute :price_history, Array(PriceHistoryItem)
 
-    # @!attribute [r] price_history
+    # @!attribute [r] color
     #   @return ['red', 'green', 'blue', 'yellow']
     attribute :color, Enum('red', 'green', 'blue', 'yellow')
   end
@@ -78,13 +78,13 @@ RSpec.describe VehicleListing do
         dealership_id: { type: 'integer' },
         price: {
           oneOf: [
-            { type: 'numeric' },
+            { type: 'number' },
             { type: 'null' }
           ]
         },
         color: {
           type: 'string',
-          enum: %w[red green blue yellow].to_set
+          enum: %w[red green blue yellow]
         },
         price_history: {
           type: 'array',
@@ -94,7 +94,7 @@ RSpec.describe VehicleListing do
             required: %i[timestamp price],
             properties: {
               timestamp: { type: 'integer' },
-              price: { type: 'numeric' }
+              price: { type: 'number' }
             }
           }
         }
@@ -119,7 +119,13 @@ RSpec.describe VehicleListing do
     expect(Scheming::Schema.json(subject))
       .to eq(expected_json_schema)
 
+    expect(Scheming::Schema.json(subject))
+      .to be_valid_json_schema
+
     expect(Scheming::Schema.json(VehicleListing))
       .to eq(expected_json_schema)
+
+    expect(Scheming::Schema.json(VehicleListing))
+      .to be_valid_json_schema
   end
 end
