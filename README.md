@@ -18,9 +18,12 @@ LineItem = Scheming.object do
   attribute :id, Integer
   attribute :name, String
   attribute :taxable, :bool
-  attribute :desc, Nullable(String)
   attribute :price, Float
-  attribute :type, Enum('entertainment', 'staple')
+
+  optional
+
+  attribute :desc, Nullable(String)
+  attribute :item_type, Enum('entertainment', 'staple')
 end
 
 Receipt = Scheming.object do
@@ -43,7 +46,7 @@ Scheming::Schema.json(Receipt)
       items: {
         type: 'object',
         additionalProperties: false,
-        required: %i[id name taxable desc price item_type],
+        required: %i[id name taxable price],
         properties: {
           id: { type: 'integer' },
           name: { type: 'string' },
@@ -57,7 +60,7 @@ Scheming::Schema.json(Receipt)
           price: { type: 'numeric' },
           item_type: {
             type: 'string',
-            enum: %w[entertainment staple].to_set
+            enum: Set['intertainment', 'staple']
           }
         }
       }

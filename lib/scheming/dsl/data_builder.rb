@@ -7,6 +7,7 @@ class Scheming::DSL::DataBuilder
   def initialize(builder = Scheming::Attribute::ListBuilder.new)
     @builder = builder
     @resolver = Scheming::DSL::TypeResolver
+    @required = true
   end
 
   # @param field_name [Symbol]
@@ -14,9 +15,17 @@ class Scheming::DSL::DataBuilder
   # @param null [Boolean]
   # @return [void]
   def attribute(field_name, type_spec)
-    type = @resolver.resolve(type_spec)
-    @builder = @builder.attribute(field_name, type:)
+    @builder = @builder.attribute(
+      field_name,
+      type: @resolver.resolve(type_spec),
+      is_required: @required
+    )
     nil
+  end
+
+  # Mark all arrtibutes after this as optional
+  def optional
+    @required = false
   end
 
   # @return [Class]

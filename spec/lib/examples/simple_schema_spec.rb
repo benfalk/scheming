@@ -4,8 +4,11 @@ LineItem = Scheming.object do
   attribute :id, Integer
   attribute :name, String
   attribute :taxable, :bool
-  attribute :desc, Nullable(String)
   attribute :price, Float
+
+  optional
+
+  attribute :desc, Nullable(String)
   attribute :item_type, Enum('entertainment', 'staple')
 end
 
@@ -26,7 +29,7 @@ RSpec.describe do
           items: {
             type: 'object',
             additionalProperties: false,
-            required: %i[id name taxable desc price item_type],
+            required: %i[id name taxable price],
             properties: {
               id: { type: 'integer' },
               name: { type: 'string' },
