@@ -6,9 +6,10 @@ LineItem = Scheming.object do
   attribute :taxable, :bool
   attribute :price, Float
 
-  optional
-
+  tag(:optional)
   attribute :desc, Nullable(String)
+
+  tag(:optional)
   attribute :item_type, Enum('entertainment', 'staple')
 end
 

@@ -7,7 +7,7 @@ class Scheming::DSL::DataBuilder
   def initialize(builder = Scheming::Attribute::ListBuilder.new)
     @builder = builder
     @resolver = Scheming::DSL::TypeResolver
-    @required = true
+    @tagging = Scheming::DSL::Tagging.new
   end
 
   # @param field_name [Symbol]
@@ -18,14 +18,17 @@ class Scheming::DSL::DataBuilder
     @builder = @builder.attribute(
       field_name,
       type: @resolver.resolve(type_spec),
-      is_required: @required
+      **@tagging.attribute_params
     )
+    @tagging.reset!
     nil
   end
 
-  # Mark all arrtibutes after this as optional
-  def optional
-    @required = false
+  # @param name [Symbol]
+  # @param args [Hash<Symbol, Object>]
+  def tag(name, **args)
+    @tagging.tag!(name, args)
+    nil
   end
 
   # @return [Class]

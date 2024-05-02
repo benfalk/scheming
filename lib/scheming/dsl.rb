@@ -8,6 +8,7 @@
 # who need to know.
 #
 module Scheming::DSL
+  require_relative 'dsl/tagging'
   require_relative 'dsl/type_specs'
   require_relative 'dsl/data_builder'
   require_relative 'dsl/object_type_def'
