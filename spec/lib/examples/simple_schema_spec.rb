@@ -13,9 +13,14 @@ LineItem = Scheming.object do
   attribute :item_type, Enum('entertainment', 'staple')
 end
 
+Point = Scheming.generic do |(type)|
+  Object(x: type, y: type)
+end
+
 Receipt = Scheming.object do
   attribute :line_items, Array(LineItem)
   attribute :total, Float
+  attribute :location, Point[Float]
 end
 
 RSpec.describe do
@@ -23,7 +28,7 @@ RSpec.describe do
     expect(Scheming::Schema.json(Receipt)).to eq(
       type: 'object',
       additionalProperties: false,
-      required: %i[line_items total],
+      required: %i[line_items total location],
       properties: {
         line_items: {
           type: 'array',
@@ -49,7 +54,16 @@ RSpec.describe do
             }
           }
         },
-        total: { type: 'number' }
+        total: { type: 'number' },
+        location: {
+          type: 'object',
+          additionalProperties: false,
+          required: %i[x y],
+          properties: {
+            x: { type: 'number' },
+            y: { type: 'number' }
+          }
+        }
       }
     )
   end

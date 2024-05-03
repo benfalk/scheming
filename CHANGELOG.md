@@ -1,5 +1,30 @@
 ## [Unreleased]
 
+## [0.5.0] - 2024-05-02
+
+### Added
+
+- Support for `generic` definitions
+
+  # Example
+  ```ruby
+  Point = Scheming.generic do |(type)|
+    Object(x: type, y: type)
+  end
+
+  Scheming::Schema.json(Point)
+  # =>
+  {
+    type: 'object',
+    additionalProperties: false,
+    required: %i[x y],
+    properties: {
+      x: { type: 'number' },
+      y: { type: 'number' }
+    }
+  }
+  ```
+
 ## [0.4.0] - 2024-05-02
 
 ### Breaking Change
@@ -35,6 +60,8 @@
 
 ### Enhancement
 
+- Ensure all types produce valid JSON Schema
+
 ## [0.2.0] - 2024-05-01
 
 ### Added
@@ -55,8 +82,6 @@
     attribute :item_type, Enum('entertainment', 'staple')
   end
   ```
-
-- Ensure all types produce valid JSON Schema
 
 ## [0.1.0] - 2024-04-26
 

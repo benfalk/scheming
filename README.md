@@ -27,9 +27,14 @@ LineItem = Scheming.object do
   attribute :item_type, Enum('entertainment', 'staple')
 end
 
+Point = Scheming.generic do |(type)|
+  Object(x: type, y: type)
+end
+
 Receipt = Scheming.object do
   attribute :line_items, Array(LineItem)
   attribute :total, Float
+  attribute :location, Point[Float]
 end
 ```
 
@@ -40,7 +45,7 @@ Scheming::Schema.json(Receipt)
 {
   type: 'object',
   additionalProperties: false,
-  required: %i[line_items total],
+  required: %i[line_items total location],
   properties: {
     line_items: {
       type: 'array',
@@ -61,12 +66,21 @@ Scheming::Schema.json(Receipt)
           price: { type: 'number' },
           item_type: {
             type: 'string',
-            enum: ['intertainment', 'staple']
+            enum: %w[entertainment staple]
           }
         }
       }
     },
-    total: { type: 'number' }
+    total: { type: 'number' },
+    location: {
+      type: 'object',
+      additionalProperties: false,
+      required: %i[x y],
+      properties: {
+        x: { type: 'number' },
+        y: { type: 'number' }
+      }
+    }
   }
 }
 ```

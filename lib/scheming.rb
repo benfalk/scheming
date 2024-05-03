@@ -10,6 +10,7 @@ module Scheming
   require_relative 'scheming/attribute'
   require_relative 'scheming/type'
   require_relative 'scheming/schema'
+  require_relative 'scheming/generic'
   require_relative 'scheming/dsl'
 
   # @return [Class]
@@ -18,4 +19,7 @@ module Scheming
     builder.instance_exec(&)
     builder.build
   end
+
+  # @return [Scheming::Generic]
+  def self.generic(&) = Scheming::Generic.new(&)
 end
