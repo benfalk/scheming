@@ -12,7 +12,6 @@ class Scheming::DSL::DataBuilder
 
   # @param field_name [Symbol]
   # @param type_spec [Object]
-  # @param null [Boolean]
   # @return [void]
   def attribute(field_name, type_spec)
     @builder = @builder.attribute(

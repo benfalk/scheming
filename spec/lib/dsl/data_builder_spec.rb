@@ -20,7 +20,7 @@ RSpec.describe Scheming::DSL::DataBuilder do
       .to eq(
         type: 'object',
         additionalProperties: false,
-        required: %i[first_name aliases],
+        required: %w[first_name aliases],
         properties: {
           first_name: {
             type: 'string'

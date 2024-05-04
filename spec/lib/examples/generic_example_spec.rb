@@ -31,12 +31,12 @@ RSpec.describe do
     expect(Scheming::Schema.json(EventA)).to eq(
       type: 'object',
       additionalProperties: false,
-      required: %i[subject data event_key seq_no],
+      required: %w[subject data event_key seq_no],
       properties: {
         subject: {
           type: 'object',
           additionalProperties: false,
-          required: %i[id colors],
+          required: %w[id colors],
           properties: {
             id: { type: 'integer' },
             colors: {
@@ -48,7 +48,7 @@ RSpec.describe do
         data: {
           type: 'object',
           additionalProperties: false,
-          required: %i[created_at],
+          required: %w[created_at],
           properties: {
             created_at: { type: 'integer' }
           }
@@ -61,12 +61,12 @@ RSpec.describe do
     expect(Scheming::Schema.json(EventB)).to eq(
       type: 'object',
       additionalProperties: false,
-      required: %i[subject data event_key seq_no],
+      required: %w[subject data event_key seq_no],
       properties: {
         subject: {
           type: 'object',
           additionalProperties: false,
-          required: %i[id consumer_id],
+          required: %w[id consumer_id],
           properties: {
             id: { type: 'string' },
             consumer_id: { type: 'string' }
@@ -75,7 +75,7 @@ RSpec.describe do
         data: {
           type: 'object',
           additionalProperties: false,
-          required: %i[created_at],
+          required: %w[created_at],
           properties: {
             created_at: { type: 'integer' }
           }

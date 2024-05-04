@@ -30,7 +30,7 @@ RSpec.describe Scheming::Type::Object do
         {
           type: 'object',
           additionalProperties: false,
-          required: %i[id title summary categories],
+          required: %w[id title summary categories],
           properties: {
             id: { type: 'integer' },
             title: { type: 'string' },

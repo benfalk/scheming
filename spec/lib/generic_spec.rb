@@ -15,7 +15,7 @@ RSpec.describe Scheming::Generic do
       .to eq(
         type: 'object',
         additionalProperties: false,
-        required: %i[x y],
+        required: %w[x y],
         properties: {
           x: { type: 'number' },
           y: { type: 'number' }
@@ -41,7 +41,7 @@ RSpec.describe Scheming::Generic do
       .to eq(
         type: 'object',
         additionalProperties: false,
-        required: %i[left right value],
+        required: %w[left right value],
         properties: {
           left: {
             oneOf: [

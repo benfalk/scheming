@@ -10,7 +10,7 @@ class Scheming::DSL::Tagging
   #
   class Tag
     # @param name [Symbo]
-    # @data [Hash<Symbol, Object>]
+    # @param data [Hash<Symbol, Object>]
     def initialize(name, data)
       @name = name
       @data = data
@@ -29,8 +29,8 @@ class Scheming::DSL::Tagging
     nil
   end
 
-  # @param taglist [Hash<Symbol, Object>]
   # @param name [Symbol]
+  # @param data [Hash<Symbol, Object>]
   # @return [Tag]
   def tag!(name, data)
     @tags[name] = Tag.new(name, data)

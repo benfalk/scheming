@@ -2,7 +2,7 @@
 
 require 'scheming'
 require 'factory_bot'
-require 'json-schema'
+require 'json_schemer'
 require 'pry'
 
 RSpec.configure do |config|

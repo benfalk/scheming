@@ -14,7 +14,7 @@ RSpec.describe 'Summary and Detail' do
     {
       type: 'object',
       additionalProperties: false,
-      required: %i[title intro],
+      required: %w[title intro],
       properties: {
         title: { type: 'string' },
         intro: { type: 'string' }
@@ -26,7 +26,7 @@ RSpec.describe 'Summary and Detail' do
     {
       type: 'object',
       additionalProperties: false,
-      required: %i[title intro body],
+      required: %w[title intro body],
       properties: {
         title: { type: 'string' },
         intro: { type: 'string' },

@@ -1,5 +1,25 @@
 ## [Unreleased]
 
+### Fixed
+
+- Incorrect YARD comment tags and syntax.
+
+### Breaking Change
+
+- Switch from `json-schema` to `json_schemer`
+
+  > TL;DR
+    required object properties for the JSON schema
+    are now strings instead of symbols
+
+  After doing to research I've found that `json_schemer` is
+  more maintained than what was currently being used.  It has
+  a smaller footprint and is much faster at validation.
+
+  As a consequence the `required` properties needed to be
+  changed from symbols to strings in the generated JSON schema.
+
+
 ## [0.5.0] - 2024-05-02
 
 ### Added

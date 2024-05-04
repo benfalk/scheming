@@ -29,7 +29,10 @@ module Scheming::Schema
       private
 
       def required
-        attributes.required.map!(&:field_name).freeze
+        attributes
+          .required
+          .map! { |attr| attr.field_name.to_s.freeze }
+          .freeze
       end
 
       def properties

@@ -45,14 +45,14 @@ Scheming::Schema.json(Receipt)
 {
   type: 'object',
   additionalProperties: false,
-  required: %i[line_items total location],
+  required: %w[line_items total location],
   properties: {
     line_items: {
       type: 'array',
       items: {
         type: 'object',
         additionalProperties: false,
-        required: %i[id name taxable price],
+        required: %w[id name taxable price],
         properties: {
           id: { type: 'integer' },
           name: { type: 'string' },
@@ -75,7 +75,7 @@ Scheming::Schema.json(Receipt)
     location: {
       type: 'object',
       additionalProperties: false,
-      required: %i[x y],
+      required: %w[x y],
       properties: {
         x: { type: 'number' },
         y: { type: 'number' }

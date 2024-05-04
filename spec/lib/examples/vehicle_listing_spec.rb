@@ -66,7 +66,7 @@ RSpec.describe VehicleListing do
     {
       type: 'object',
       additionalProperties: false,
-      required: %i[
+      required: %w[
         vin make_slug model_slug
         dealership_id price price_history
         color
@@ -91,7 +91,7 @@ RSpec.describe VehicleListing do
           items: {
             type: 'object',
             additionalProperties: false,
-            required: %i[timestamp price],
+            required: %w[timestamp price],
             properties: {
               timestamp: { type: 'integer' },
               price: { type: 'number' }
