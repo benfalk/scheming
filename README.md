@@ -15,7 +15,7 @@ gem 'scheming'
 Definition:
 ```ruby
 LineItem = Scheming.object do
-  attribute :id, Integer
+  attribute :id, Union(Integer, String)
   attribute :name, String
   attribute :taxable, :bool
   attribute :price, Float
@@ -54,7 +54,12 @@ Scheming::Schema.json(Receipt)
         additionalProperties: false,
         required: %w[id name taxable price],
         properties: {
-          id: { type: 'integer' },
+          id: {
+            oneOf: [
+              { type: 'integer' },
+              { type: 'string' }
+            ]
+          },
           name: { type: 'string' },
           taxable: { type: 'boolean' },
           desc: {

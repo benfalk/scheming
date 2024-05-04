@@ -47,6 +47,23 @@ module Scheming::Type
     end
   end
 
+  # = Union Type Definition
+  #
+  # In cases where a value can be of many different
+  # types a union is how to describe this.
+  #
+  class Union < Base
+    # @return [Array<Scheming::Type::Base>]
+    attr_reader :types
+
+    # @param types [Array<Scheming::Type::Base>]
+    def initialize(types)
+      super()
+      @types = types
+      freeze
+    end
+  end
+
   # = Enumeration Type Definition
   #
   # The wrapper that describes a type and holds

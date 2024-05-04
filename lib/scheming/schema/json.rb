@@ -42,6 +42,13 @@ module Scheming::Schema
       end
     end
 
+    refine Scheming::Type::Union do
+      # @!attribute [r] types
+      #   @return [Array<Scheming::Type::Base>]
+
+      def schema = { oneOf: types.map(&:schema).freeze }
+    end
+
     refine Scheming::Type::Nullable do
       # @!attribute [r] type
       #   @return [Scheming::Type::Base]

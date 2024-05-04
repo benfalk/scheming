@@ -1,5 +1,34 @@
 ## [Unreleased]
 
+## [0.6.0] - 2024-05-04
+
+### Added
+
+- `Union` type added
+
+  #### Example
+  ```ruby
+  Order = Scheming.object do
+    attribute :id, Union(String, Integer)
+  end
+
+  Scheming::Schema.json(Order)
+  # =>
+  {
+    type: 'object',
+    additionalProperties: false,
+    required: %w[id],
+    properties: {
+      id: {
+        oneOf: [
+          { type: 'string' },
+          { type: 'integer' }
+        ]
+      }
+    }
+  }
+  ```
+
 ### Fixed
 
 - Incorrect YARD comment tags and syntax.
@@ -26,7 +55,7 @@
 
 - Support for `generic` definitions
 
-  # Example
+  #### Example
   ```ruby
   Point = Scheming.generic do |(type)|
     Object(x: type, y: type)

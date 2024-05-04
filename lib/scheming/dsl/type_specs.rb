@@ -26,4 +26,11 @@ module Scheming::DSL::TypeSpecs
     type = Scheming::DSL::TypeResolver.resolve(type_spec)
     Scheming::Type::Nullable.new(type)
   end
+
+  def Union(*type_specs) # rubocop:disable Naming/MethodName
+    types = type_specs.map do |type_spec|
+      Scheming::DSL::TypeResolver.resolve(type_spec)
+    end
+    Scheming::Type::Union.new(types)
+  end
 end
