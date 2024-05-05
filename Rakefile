@@ -9,4 +9,9 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: %i[spec rubocop]
+desc 'Run the type checker'
+task :typecheck do
+  sh 'bundle exec solargraph typecheck --level typed'
+end
+
+task default: %i[spec rubocop typecheck]

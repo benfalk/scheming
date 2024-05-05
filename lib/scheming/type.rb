@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+# This is a redundant require statement; however,
+# for some reason Solargraph will not honor the
+# path for `set` in it's config.  For this reson
+# we need to require it here to prevent typecheck
+# errors.
+require 'set' # rubocop:disable Lint/RedundantRequireStatement
+
 # = Type
 #
 # Everything needed to describe and work
@@ -11,7 +18,11 @@ module Scheming::Type
   # Any and all shared functionality comes from
   # this base type definition.
   #
-  Base = Class.new
+  class Base
+    # This class left empty on purpose.  Acts
+    # merely as a tag which all types inherit
+    # back to.
+  end
 
   # = Object Type Definition
   #

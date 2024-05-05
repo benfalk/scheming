@@ -9,7 +9,7 @@ class Scheming::DSL::Tagging
   # creation of an [Scheming::Attribute]
   #
   class Tag
-    # @param name [Symbo]
+    # @param name [Symbol]
     # @param data [Hash<Symbol, Object>]
     def initialize(name, data)
       @name = name

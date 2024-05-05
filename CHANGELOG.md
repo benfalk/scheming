@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Enhancement
+
+- Added `solorgraph` to the development process and added
+  it's typecheck to the default `rake` task.
+
+### Bugfix
+
+- Incorrect type syntax corrected as reported by `solargraph`.
+
 ## [0.6.0] - 2024-05-04
 
 ### Added
