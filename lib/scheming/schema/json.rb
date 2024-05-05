@@ -31,7 +31,7 @@ module Scheming::Schema
       def required
         attributes
           .required
-          .map! { |attr| attr.field_name.to_s.freeze }
+          .map! { |attr| attr.field_name.name }
           .freeze
       end
 

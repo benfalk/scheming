@@ -5,6 +5,9 @@
 - Added `solorgraph` to the development process and added
   it's typecheck to the default `rake` task.
 
+- Reduced string allocations when generating required field
+  names for objects with the JSON schema format.
+
 ### Bugfix
 
 - Incorrect type syntax corrected as reported by `solargraph`.

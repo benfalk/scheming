@@ -36,6 +36,7 @@ class Scheming::Attribute::List
   end
   alias [] attr
 
+  # @return [Array<Scheming::Attribute>]
   def required = each.select(&:is_required)
 
   # @return [Hash<Symbol, Scheming::Attribute>]
