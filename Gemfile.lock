@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scheming (0.6.0)
+    scheming (0.7.0)
 
 GEM
   remote: https://rubygems.org/

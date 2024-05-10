@@ -41,6 +41,25 @@ module Scheming::Type
     end
   end
 
+  # = Tuple Type Definition
+  #
+  # Specifies a type which specifies specific types
+  # in a fixed order.  Another way to think of it is
+  # like an [Scheming::Type::Object] but without named
+  # attribute fields.
+  #
+  class Tuple < Base
+    # @return [Array<Scheming::Type::Base>]
+    attr_reader :types
+
+    # @param types [Array<Scheming::Type::Base>]
+    def initialize(types)
+      super()
+      @types = types
+      freeze
+    end
+  end
+
   # = Nullable Type Definition
   #
   # Type wrapper that describes a type can be either

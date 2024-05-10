@@ -1,5 +1,40 @@
 ## [Unreleased]
 
+## [0.7.0] - 2024-05-10
+
+### Added
+
+- `Tuple` type added
+
+  #### Example
+  ```ruby
+  EmailTemplate = Scheming.object do
+    attribute :id, Integer
+    attribute :data, Tuple(String, Array(String))
+  end
+
+  Scheming::Schema.json(EmailTemplate)
+  # =>
+  {
+    type: 'object',
+    additionalProperties: false,
+    required: %w[id data],
+    properties: {
+      id: { type: 'integer' },
+      data: {
+        type: 'array',
+        prefixItems: [
+          { type: 'string' },
+          {
+            type: 'array',
+            items: { type: 'string' }
+          }
+        ]
+      }
+    }
+  }
+  ```
+
 ### Enhancement
 
 - Added `solorgraph` to the development process and added

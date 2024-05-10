@@ -49,6 +49,18 @@ module Scheming::Schema
       def schema = { oneOf: types.map(&:schema).freeze }
     end
 
+    refine Scheming::Type::Tuple do
+      # @!attribute [r] types
+      #   @return [Array<Scheming::Type::Base>]
+
+      def schema
+        {
+          type: 'array',
+          prefixItems: types.map(&:schema).freeze
+        }.freeze
+      end
+    end
+
     refine Scheming::Type::Nullable do
       # @!attribute [r] type
       #   @return [Scheming::Type::Base]

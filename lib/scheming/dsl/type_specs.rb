@@ -33,4 +33,11 @@ module Scheming::DSL::TypeSpecs
     end
     Scheming::Type::Union.new(types)
   end
+
+  def Tuple(*type_specs) # rubocop:disable Naming/MethodName
+    types = type_specs.map do |type_spec|
+      Scheming::DSL::TypeResolver.resolve(type_spec)
+    end
+    Scheming::Type::Tuple.new(types.freeze)
+  end
 end
