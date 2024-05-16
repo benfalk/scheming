@@ -11,12 +11,12 @@ RSpec.describe Scheming::DSL::DataBuilder do
   it do
     expect(dto_class).to be < Data
 
-    expect(dto_class.dto_type)
+    expect(dto_class.scheming_type)
       .to be_a(Scheming::Type::Object)
 
-    expect(dto_class.dto_type).to be_frozen
+    expect(dto_class.scheming_type).to be_frozen
 
-    expect(Scheming::Schema.json(dto_class.dto_type))
+    expect(Scheming::Schema.json(dto_class.scheming_type))
       .to eq(
         type: 'object',
         additionalProperties: false,

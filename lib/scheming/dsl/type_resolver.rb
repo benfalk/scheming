@@ -15,7 +15,7 @@ module Scheming::DSL::TypeResolver
   end
 
   refine Symbol do
-    def dto_type
+    def scheming_type
       case self
       when :int, :integer then Scheming::Type::Integer.new
       when :str, :string then Scheming::Type::String.new
@@ -26,57 +26,57 @@ module Scheming::DSL::TypeResolver
   end
 
   refine Scheming::Type::Base do
-    def dto_type = self
+    def scheming_type = self
   end
 
   refine Array do
-    def dto_type
+    def scheming_type
       # TODO: Error Handling
-      Scheming::Type::Array.new(first.dto_type)
+      Scheming::Type::Array.new(first.scheming_type)
     end
   end
 
   refine Scheming::DSL::ObjectTypeDef do
-    def dto_type = self.class.dto_type
+    def scheming_type = self.class.scheming_type
   end
 
   refine ::String.singleton_class do
-    def dto_type = Constants::STRING
+    def scheming_type = Constants::STRING
   end
 
   refine ::String do
-    def dto_type = Constants::STRING
+    def scheming_type = Constants::STRING
   end
 
   refine ::Float.singleton_class do
-    def dto_type = Constants::FLOAT
+    def scheming_type = Constants::FLOAT
   end
 
   refine ::Float do
-    def dto_type = Constants::FLOAT
+    def scheming_type = Constants::FLOAT
   end
 
   refine ::Integer.singleton_class do
-    def dto_type = Constants::INTEGER
+    def scheming_type = Constants::INTEGER
   end
 
   refine ::Integer do
-    def dto_type = Constants::INTEGER
+    def scheming_type = Constants::INTEGER
   end
 
   refine ::TrueClass do
-    def dto_type = Constants::BOOLEAN
+    def scheming_type = Constants::BOOLEAN
   end
 
   refine ::FalseClass do
-    def dto_type = Constants::BOOLEAN
+    def scheming_type = Constants::BOOLEAN
   end
 
   refine ::Set do
-    def dto_type
+    def scheming_type
       # TODO: Type checking of all values
       Scheming::Type::Enum.new(
-        first.dto_type,
+        first.scheming_type,
         values: dup.freeze
       )
     end
@@ -86,5 +86,5 @@ module Scheming::DSL::TypeResolver
 
   module_function
 
-  def resolve(any) = any.dto_type
+  def resolve(any) = any.scheming_type
 end

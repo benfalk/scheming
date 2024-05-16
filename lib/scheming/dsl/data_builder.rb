@@ -33,10 +33,10 @@ class Scheming::DSL::DataBuilder
   # @return [Class]
   def build
     list = @builder.build
-    dto_type = Scheming::Type::Object.new(list)
+    scheming_type = Scheming::Type::Object.new(list)
 
     data = ::Data.define(*list.map(&:field_name))
-    data.instance_variable_set(:@dto_type, dto_type)
+    data.instance_variable_set(:@scheming_type, scheming_type)
     data.include(Scheming::DSL::ObjectTypeDef)
     data
   end

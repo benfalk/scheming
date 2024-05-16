@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Refactor
+
+- Removed references from original WIP project referrng to `dto_type`
+
 ## [0.7.0] - 2024-05-10
 
 ### Added

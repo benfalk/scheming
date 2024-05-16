@@ -9,21 +9,21 @@ module Scheming::DSL::ObjectTypeDef
   # @private
   module ClassMethods
     # @return [Scheming::Type::Object]
-    def dto_type = @dto_type
+    def scheming_type = @scheming_type
 
     def inherited(klass)
       super
       klass.extend(ClassMethods)
       klass.instance_variable_set(
-        :@dto_type,
-        dto_type
+        :@scheming_type,
+        scheming_type
       )
     end
 
     # @return [Class<Data>]
     def extend_with(&)
       list = Scheming::Attribute::ListBuilder.new(
-        dto_type.attributes.to_a
+        scheming_type.attributes.to_a
       )
       builder = Scheming::DSL::DataBuilder.new(list)
       builder.instance_exec(&)

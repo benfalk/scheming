@@ -29,7 +29,7 @@ RSpec.describe Scheming::Attribute::ListBuilder do
   end
 
   subject do
-    builder.attribute(field_name, type: type_spec.dto_type).build
+    builder.attribute(field_name, type: type_spec.scheming_type).build
   end
 
   context 'empty' do
